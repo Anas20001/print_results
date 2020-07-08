@@ -29,7 +29,7 @@ def get_pet_labels(image_dir):
     #go through each file in the directory and extract only the words of the files containing pet image label
     for idx in range(0, len(filenames), 1):
         if filenames[idx][0] != ".":           
-            root_ext = listdir.splitext(filenames[idx]) # remember to import path from os
+            root_ext = os.path.splitext(filenames[idx]) # remember to import path from os
             image_name = root_ext[0].split('_')
             print(image_name)
             pet_label = " "
