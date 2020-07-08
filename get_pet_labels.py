@@ -1,3 +1,9 @@
+from os import listdir
+
+# TODO 2: Define get_pet_labels function below please be certain to replace None
+#       in the return statement with results_dic dictionary that you create 
+#       with this function
+# 
 def get_pet_labels(image_dir):
     """
     Creates a dictionary of pet labels (results_dic) based upon the filenames 
@@ -22,13 +28,16 @@ def get_pet_labels(image_dir):
     
     #go through each file in the directory and extract only the words of the files containing pet image label
     for idx in range(0, len(filenames), 1):
-        if filenames[idx][0] != ".":
-            image_name = filenames[idx].split('_')
+        if filenames[idx][0] != ".":           
+            root_ext = listdir.splitext(filenames[idx]) # remember to import path from os
+            image_name = root_ext[0].split('_')
+            print(image_name)
             pet_label = " "
             for word in image_name:
                 if word.isalpha():
-                    pet_label+=word.lower() + " "
-            pet_label = pet_label.strip()
+                    pet_label += word + " "
+                    
+            pet_label = pet_label.strip()        
             if filenames[idx] not in results_dic:
                 results_dic[filenames[idx]] = [pet_label]
                 
